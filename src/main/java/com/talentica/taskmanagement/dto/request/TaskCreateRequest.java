@@ -1,10 +1,12 @@
 package com.talentica.taskmanagement.dto.request;
 
+
+import jakarta.persistence.Id;
 import com.talentica.taskmanagement.enums.TaskType;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class TaskCreateRequest {
