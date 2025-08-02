@@ -3,10 +3,10 @@ package com.talentica.taskmanagement.entity;
 import com.talentica.taskmanagement.enums.TaskStatus;
 import com.talentica.taskmanagement.enums.TaskType;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
