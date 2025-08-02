@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/taskmanagement_prod}
+    username: ${DATABASE_USERNAME:taskuser}
+    password: ${DATABASE_PASSWORD:taskpass}
+    driver-class-name: org.postgresql.Driver
+    
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    com.talentica.taskmanagement: INFO
+    org.springframework.security: WARN
+    root: WARN
+  file:
+    name: logs/task-management-service.log
+    max-size: 10MB
+    max-history: 30
+
+server:
+  port: ${SERVER_PORT:8080}
+
+jwt:
+  secret: ${JWT_SECRET:myProductionSecretKeyThatShouldBeVeryLong}
+  expiration: ${JWT_EXPIRATION:86400000}
