@@ -1,6 +1,6 @@
 package com.talentica.taskmanagement.dto.request;
 
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class TaskUpdateRequest {

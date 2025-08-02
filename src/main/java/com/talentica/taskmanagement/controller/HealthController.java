@@ -1,7 +1,7 @@
 package com.talentica.taskmanagement.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class HealthController {
 
     @GetMapping
-    @ApiOperation(value = "Health check", notes = "Check if the service is running")
+    @Operation(summary = "Health check", description = "Check if the service is running")
     public ResponseEntity<Map<String, Object>> health() {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "UP");
