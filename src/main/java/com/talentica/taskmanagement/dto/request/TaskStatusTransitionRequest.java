@@ -2,7 +2,7 @@ package com.talentica.taskmanagement.dto.request;
 
 import com.talentica.taskmanagement.enums.TaskStatus;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class TaskStatusTransitionRequest {
 
