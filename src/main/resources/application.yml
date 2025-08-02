@@ -28,3 +28,8 @@ logging:
 jwt:
   secret: mySecretKey
   expiration: 86400000 # 24 hours in milliseconds
+# SpringDoc OpenAPI Configuration
+springdoc.api-docs.path=/v3/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.operationsSorter=method
+springdoc.packages-to-scan=com.example
