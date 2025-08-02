@@ -1,14 +1,18 @@
 package com.talentica.taskmanagement.config;
 
+
+
+import org.springframework.stereotype.Service;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.*;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
-import springfox.documentation.spring.web.plugins.Docket;
+// Springfox ApiInfoBuilder removed - use OpenAPI Info
+// Springfox PathSelectors removed - use springdoc auto-configuration
+// Springfox RequestHandlerSelectors removed - use springdoc auto-configuration
+// Removed springfox import: springfox.documentation.service.*;
+// Springfox DocumentationType removed - use OpenAPI
+// Springfox SecurityContext removed - use OpenAPI security
+import io.swagger.v3.oas.models.OpenAPI;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,15 +21,12 @@ import java.util.List;
 public class SwaggerConfig {
 
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.OAS_30)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.talentica.taskmanagement.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo())
-                .securityContexts(Arrays.asList(securityContext()))
-                .securitySchemes(Arrays.asList(apiKey()));
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("API Documentation")
+                        .description("API documentation generated with springdoc-openapi")
+                        .version("1.0.0"));
     }
 
     private ApiInfo apiInfo() {
