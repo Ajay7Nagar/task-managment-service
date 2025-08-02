@@ -23,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-//    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'MANAGER')")
     @ApiOperation(value = "Get all users", notes = "Get list of all active users")
     public ResponseEntity<List<UserResponse>> getAllUsers() {
         List<UserResponse> users = userService.getAllUsers();

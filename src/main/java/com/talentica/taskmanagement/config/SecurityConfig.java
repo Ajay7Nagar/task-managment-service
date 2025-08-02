@@ -61,8 +61,8 @@ public class SecurityConfig {
                     .antMatchers("/api/admin/**").hasRole("ADMIN")
                     
                     // User management endpoints
-                    .antMatchers(HttpMethod.GET, "/api/users/**").permitAll()
-                    .antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
+                    .antMatchers(HttpMethod.POST, "/api/users").hasRole("ADMIN")
                     .antMatchers(HttpMethod.PUT, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
                     .antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
                     
