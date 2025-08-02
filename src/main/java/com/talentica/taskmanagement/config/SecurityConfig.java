@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
@@ -40,37 +40,37 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
+        http.cors().and().csrf(csrf -> csrf.disable())
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
+                .authorizeHttpRequests()
                     // Public endpoints
-                    .antMatchers("/api/auth/**").permitAll()
-                    .antMatchers("/api/health/**").permitAll()
+                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/api/health/**").permitAll()
                     
                     // Swagger endpoints
-                    .antMatchers("/v3/api-docs/**").permitAll()
-                    .antMatchers("/swagger-ui/**").permitAll()
-                    .antMatchers("/swagger-ui.html").permitAll()
-                    .antMatchers("/swagger-resources/**").permitAll()
-                    .antMatchers("/webjars/**").permitAll()
+                    .requestMatchers("/v3/api-docs/**").permitAll()
+                    .requestMatchers("/swagger-ui/**").permitAll()
+                    .requestMatchers("/swagger-ui.html").permitAll()
+                    .requestMatchers("/swagger-resources/**").permitAll()
+                    .requestMatchers("/webjars/**").permitAll()
                     
                     // Admin endpoints
-                    .antMatchers("/api/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/api/admin/**").hasRole("ADMIN")
                     
                     // User management endpoints
-                    .antMatchers(HttpMethod.GET, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
-                    .antMatchers(HttpMethod.POST, "/api/users").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.PUT, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
-                    .antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
+                    .requestMatchers(HttpMethod.POST, "/api/users").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
+                    .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
                     
                     // Task endpoints
-                    .antMatchers(HttpMethod.GET, "/api/tasks/**").authenticated()
-                    .antMatchers(HttpMethod.POST, "/api/tasks").authenticated()
-                    .antMatchers(HttpMethod.PUT, "/api/tasks/**").authenticated()
-                    .antMatchers(HttpMethod.DELETE, "/api/tasks/**").hasAnyRole("ADMIN", "MANAGER")
+                    .requestMatchers(HttpMethod.GET, "/api/tasks/**").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/tasks").authenticated()
+                    .requestMatchers(HttpMethod.PUT, "/api/tasks/**").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/api/tasks/**").hasAnyRole("ADMIN", "MANAGER")
                     
                     // All other endpoints require authentication
                     .anyRequest().authenticated();
