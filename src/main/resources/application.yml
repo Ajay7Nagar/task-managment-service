@@ -28,3 +28,11 @@ logging:
 jwt:
   secret: mySecretKeyWhichIslongEnough256TobeProtected
   expiration: 86400000 # 24 hours in milliseconds
+# SpringDoc OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+  packages-to-scan: com.talentica.taskmanagement.controller
