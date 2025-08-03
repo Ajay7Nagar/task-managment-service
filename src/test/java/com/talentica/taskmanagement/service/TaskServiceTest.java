@@ -1,5 +1,7 @@
 package com.talentica.taskmanagement.service;
 
+
+import org.springframework.stereotype.Service;
 import com.talentica.taskmanagement.dto.request.TaskCreateRequest;
 import com.talentica.taskmanagement.dto.request.TaskStatusTransitionRequest;
 import com.talentica.taskmanagement.dto.request.TaskUpdateRequest;
