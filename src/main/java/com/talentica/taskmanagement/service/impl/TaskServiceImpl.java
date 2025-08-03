@@ -1,5 +1,7 @@
 package com.talentica.taskmanagement.service.impl;
 
+
+import jakarta.persistence.Id;
 import com.talentica.taskmanagement.dto.request.TaskCreateRequest;
 import com.talentica.taskmanagement.dto.request.TaskStatusTransitionRequest;
 import com.talentica.taskmanagement.dto.request.TaskUpdateRequest;

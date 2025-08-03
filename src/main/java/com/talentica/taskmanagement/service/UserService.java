@@ -1,5 +1,7 @@
 package com.talentica.taskmanagement.service;
 
+
+import org.springframework.stereotype.Service;
 import com.talentica.taskmanagement.dto.request.UserRegistrationRequest;
 import com.talentica.taskmanagement.dto.response.UserResponse;
 import com.talentica.taskmanagement.entity.User;
